@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="littlemm.teach.Views.WelcomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:littlemm.teach.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wm ="using:littlemm.teach.ViewModels"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <FlipView Background="White"
+                        IsEnabled="True"
+                        ItemsSource="{Binding WelcomeItems}"
+                        SelectedItem="{Binding SelectedWelcomeItem,Mode=TwoWay}">
+            <FlipView.ItemTemplate>
+                <DataTemplate x:DataType="wm:WelcomeItem">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <TextBlock HorizontalAlignment="Center"
+                                             FontSize="46"
+                                             Foreground="Black"
+                                             Text="{Binding HeaderText}" 
+                                             TextAlignment="Center"/>
+                            <TextBlock HorizontalAlignment="Center"
+                                             FontSize="36"
+                                             Text="{Binding ContentText}"
+                                             TextAlignment="Center"
+                                       />
+                            <Image MaxWidth="250"
+                                        Source="{Binding Image}"
+                                        Stretch="Uniform"/>
+
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+
+        </FlipView>
+    </Grid>
+</Page>
